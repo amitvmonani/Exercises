@@ -1,35 +1,38 @@
 package StringExercise;
 
+import java.math.BigInteger;
 import java.util.Scanner;
 
 public class Main {
 
-	static long maxNumber(String S) {
-		long maxval = 0;
-		long currentval = 0;
+	static BigInteger maxNumber(String S) {
+		BigInteger maxval = BigInteger.valueOf(0);
+		BigInteger currentval = BigInteger.valueOf(0);
 
 		if (S == null)
-			return 0;
+			return BigInteger.valueOf(0);
 
 		// traverse through the given string
 		for (int i = 0; i < S.length(); i++) {
 
 			// identify if there is a digit, if yes
-			// convert it into integer till there are consecutive digits
+			// convert it into BigInteger till there are consecutive digits
 			if (Character.isDigit(S.charAt(i))) {
-				currentval = (currentval * 10) + Character.getNumericValue(S.charAt(i));
+				currentval = currentval.multiply(BigInteger.valueOf(10))
+						.add(BigInteger.valueOf(Character.getNumericValue(S.charAt(i))));
 
 				// update the maximum value if end of string is reached
 				// with last character being digit
 				if (i == S.length() - 1) {
-					maxval = Math.max(maxval, currentval);
+					maxval = maxval.max(currentval);
 				}
 
-				// update maximum value and reset the current value variable
+			// update maximum value and reset the current value
 			} else {
-				maxval = Math.max(maxval, currentval);
-				currentval = 0;
+				maxval = maxval.max(currentval);
+				currentval = BigInteger.valueOf(0);
 			}
+			
 		}
 		return maxval;
 	}
