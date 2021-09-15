@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Main {
 
-	static BigInteger maxNumber(String S) {
+	public static BigInteger maxNumber(String S) {
 		BigInteger maxval = BigInteger.valueOf(0);
 		BigInteger currentval = BigInteger.valueOf(0);
 
@@ -27,12 +27,12 @@ public class Main {
 					maxval = maxval.max(currentval);
 				}
 
-			// update maximum value and reset the current value
+				// update maximum value and reset the current value
 			} else {
 				maxval = maxval.max(currentval);
 				currentval = BigInteger.valueOf(0);
 			}
-			
+
 		}
 		return maxval;
 	}
