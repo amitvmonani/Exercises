@@ -75,13 +75,6 @@ class MainTest {
 		assertEquals(exp, Main.maxNumber(prop.getProperty("OnlyNumericInput")));
 	}
 
-	@Test
-	void testMaxLengthWithOnlyNumericInput() {
-		String expString = prop.getProperty("MaxLengthWithOnlyNumericExpected");
-		String actString = Main.maxNumber(prop.getProperty("MaxLengthWithOnlyNumericInput")).toString();
-		assertEquals(expString, actString);
-		
-	}
 	
 	@Test
 	void testMaxLengthAlphanumericInput() throws Exception {
@@ -96,5 +89,16 @@ class MainTest {
 		
 	}
 	
+	@Test
+	void TestMoreThanMaxLenghtInput() {
+		exp = BigInteger.valueOf(Long.parseLong(prop.getProperty("MoreThanMaxLenghtExpected")));
+				assertEquals(exp,Main.maxNumber(prop.getProperty("MoreThanMaxLenghtInput")));
+	}
+	
+	@Test
+	void TestLessThanMinLengthInput() {
+		exp = BigInteger.valueOf(Long.parseLong(prop.getProperty("LessThanMinLengthExpected")));
+		assertEquals(exp,Main.maxNumber(prop.getProperty("LessThanMinLengthInput")));
+	}
 	
 }
